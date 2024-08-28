@@ -8,7 +8,6 @@ export const getAllCharachters = async (page: number) => {
 };
 
 export const getFilteredCharachters = async (status: string, page: number) => {
-  console.log(`${baseURL}/character?status=${status}&page=${page}`);
   const response = await axios.get(`${baseURL}/character?status=${status}&page=${page}`);
   return response.data;
 };

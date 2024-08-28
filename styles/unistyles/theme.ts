@@ -19,7 +19,10 @@ export const lightTheme = {
     },
     Header: {
       background: colors.Tolopea[200],
-      title: colors.Tolopea[950],
+      title: colors.Tolopea[800],
+    },
+    CategoryCard: {
+      backgroundColor: colors.Tolopea[100],
     },
   },
 };
@@ -43,6 +46,9 @@ export const darkTheme = {
     Header: {
       background: colors.Tolopea[800],
       title: colors.Tolopea[100],
+    },
+    CategoryCard: {
+      backgroundColor: colors.Tolopea[900],
     },
   },
 };

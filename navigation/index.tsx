@@ -9,6 +9,7 @@ import { DevToolsBubble } from 'react-native-react-query-devtools';
 import { useStyles } from 'react-native-unistyles';
 import Home from 'screens/Home';
 import SplashScreen from 'screens/SplashScreen';
+import ToggleThemeButton from '~/components/ToggleThemeButton';
 if (__DEV__) {
   import('~/reactotron').then(() => console.log('Reactotron Configured'));
 }
@@ -27,6 +28,8 @@ export default function RootStack() {
     'Montserrat-Semibold': require('../assets/fonts/Montserrat-SemiBold.otf'),
     'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.otf'),
     'Montserrat-Medium': require('../assets/fonts/Montserrat-Medium.otf'),
+    'ClashDisplay-Semibold': require('../assets/fonts/ClashDisplay-Semibold.otf'),
+    'ClashDisplay-Medium': require('../assets/fonts/ClashDisplay-Medium.otf'),
   });
 
   if (!isFontLoaded) {
@@ -45,7 +48,7 @@ export default function RootStack() {
             },
             headerTitleStyle: {
               color: theme.components.Header.title,
-              fontFamily: 'Montserrat-Semibold',
+              fontFamily: 'ClashDisplay-Semibold',
             },
           }}>
           <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
@@ -56,6 +59,7 @@ export default function RootStack() {
               headerBackground(props) {
                 return <View />;
               },
+              headerRight: () => <ToggleThemeButton />,
             }}
           />
         </Stack.Navigator>
