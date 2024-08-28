@@ -1,4 +1,4 @@
-import './unistyles';
+import './styles/unistyles';
 
 import 'react-native-gesture-handler';
 
