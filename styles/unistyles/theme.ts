@@ -17,6 +17,10 @@ export const lightTheme = {
       body: colors.Neutral[600],
       body_small: colors.Neutral[600],
     },
+    Header: {
+      background: colors.Tolopea[200],
+      title: colors.Tolopea[950],
+    },
   },
 };
 
@@ -35,6 +39,10 @@ export const darkTheme = {
       heading_3: colors.Neutral[100],
       body: colors.Neutral[400],
       body_small: colors.Neutral[400],
+    },
+    Header: {
+      background: colors.Tolopea[800],
+      title: colors.Tolopea[100],
     },
   },
 };
