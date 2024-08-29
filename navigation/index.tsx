@@ -5,6 +5,7 @@ import LoadingScreen from 'components/LoadingScreen';
 import { useFonts } from 'expo-font';
 import { queryClient } from 'queryClient';
 import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useStyles } from 'react-native-unistyles';
 import Home from 'screens/Home';
 import SplashScreen from 'screens/SplashScreen';
@@ -12,6 +13,7 @@ import SplashScreen from 'screens/SplashScreen';
 import HeaderBackButton from '~/components/HeaderBackButton';
 import ToggleThemeButton from '~/components/ToggleThemeButton';
 import Contacts from '~/screens/Contacts';
+import Details from '~/screens/Details';
 if (__DEV__) {
   import('~/reactotron').then(() => console.log('Reactotron Configured'));
 }
@@ -19,6 +21,7 @@ export type RootStackParamList = {
   Home: undefined;
   Splash: undefined;
   Contacts: undefined;
+  Details: { id: number };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -41,43 +44,53 @@ export default function RootStack() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Splash"
-          screenOptions={{
-            cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
-            headerBackgroundContainerStyle: {
-              backgroundColor: theme.components.Header.background,
-            },
-            headerTitleStyle: {
-              color: theme.components.Header.title,
-              fontFamily: 'ClashDisplay-Semibold',
-            },
-          }}>
-          <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              headerBackground(props) {
-                return <View />;
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Splash"
+            screenOptions={{
+              cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
+              headerBackgroundContainerStyle: {
+                backgroundColor: theme.components.Header.background,
               },
-              headerRight: () => <ToggleThemeButton />,
-            }}
-          />
-          <Stack.Screen
-            name="Contacts"
-            component={Contacts}
-            options={{
-              headerBackground(props) {
-                return <View />;
+              headerTitleStyle: {
+                color: theme.components.Header.title,
+                fontFamily: 'ClashDisplay-Semibold',
               },
-              headerLeft: () => <HeaderBackButton previousRoute="Home" />,
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+            }}>
+            <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                headerBackground(props) {
+                  return <View />;
+                },
+                headerRight: () => <ToggleThemeButton />,
+              }}
+            />
+            <Stack.Screen
+              name="Contacts"
+              component={Contacts}
+              options={{
+                headerBackground(props) {
+                  return <View />;
+                },
+                headerLeft: () => <HeaderBackButton previousRoute="Home" />,
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
+            />
+            <Stack.Screen
+              options={{
+                headerShown: false,
+                cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+              }}
+              name="Details"
+              component={Details}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
     </QueryClientProvider>
   );
 }

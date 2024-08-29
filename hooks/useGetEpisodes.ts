@@ -1,11 +1,14 @@
-import useGetCharachterById from './useGetCharachterById';
+import { useQuery } from '@tanstack/react-query';
 
-const useGetEpisodes = ({ id }: { id: number }) => {
-  const { charachter } = useGetCharachterById({ id });
+import { getEpisodeList } from '~/api/charachter.api';
 
-  const initialArray = charachter?.episode.map((episode: string) => episode.split('/').pop());
+const useGetEpisodes = ({ EpisodeList }: { EpisodeList: string[] }) => {
+  const { data, error, status } = useQuery({
+    queryKey: ['all-characters', EpisodeList],
+    queryFn: () => getEpisodeList(EpisodeList),
+  });
 
-  return { initialArray };
+  return { data, error, status };
 };
 
 export default useGetEpisodes;

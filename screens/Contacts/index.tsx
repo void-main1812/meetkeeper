@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, SafeAreaView } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 
 import Button from '~/components/Button';
@@ -10,7 +10,7 @@ import { contactsPageStyles } from '~/styles/contactsPageStyles';
 
 const Contacts = ({ route, naivgation }: any) => {
   const [page, setPage] = useState(1);
-  const { theme, styles } = useStyles(contactsPageStyles);
+  const { styles } = useStyles(contactsPageStyles);
 
   const { type } = route.params;
 
@@ -47,6 +47,7 @@ const Contacts = ({ route, naivgation }: any) => {
             status={item.status}
             key={item.id}
             location={item.location.name}
+            id={item.id}
           />
         )}
       />

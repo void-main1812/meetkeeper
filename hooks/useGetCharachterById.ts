@@ -5,7 +5,7 @@ import { getCharachterById } from '~/api/charachter.api';
 const useGetCharachterById = ({ id }: { id: number }) => {
   const { data, error, status } = useQuery({
     queryKey: ['charachter-by-id'],
-    queryFn: () => getCharachterById(1),
+    queryFn: () => getCharachterById(id),
   });
 
   const charachter = data;
