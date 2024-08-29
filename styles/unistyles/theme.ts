@@ -24,6 +24,19 @@ export const lightTheme = {
     CategoryCard: {
       backgroundColor: colors.Tolopea[100],
     },
+    PaginationButtons: {
+      backgroundColor: colors.Tolopea[200],
+      button: colors.Tolopea[100],
+      text: colors.Tolopea[800],
+    },
+    CharachterCard: {
+      backgroundColor: colors.Tolopea[100],
+      title: colors.Tolopea[800],
+      aliveBackground: colors.Malachite[100],
+      deadBackground: colors.TotemPole[100],
+      unknownBackground: colors.Neutral[400],
+      unknownText: colors.Neutral[900],
+    },
   },
 };
 
@@ -49,6 +62,19 @@ export const darkTheme = {
     },
     CategoryCard: {
       backgroundColor: colors.Tolopea[900],
+    },
+    PaginationButtons: {
+      backgroundColor: colors.Tolopea[800],
+      button: colors.Tolopea[500],
+      text: colors.Tolopea[200],
+    },
+    CharachterCard: {
+      backgroundColor: colors.Tolopea[900],
+      title: colors.Tolopea[200],
+      aliveBackground: colors.Malachite[950],
+      deadBackground: colors.TotemPole[950],
+      unknownBackground: colors.Neutral[950],
+      unknownText: colors.Neutral[400],
     },
   },
 };

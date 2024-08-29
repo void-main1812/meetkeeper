@@ -5,17 +5,20 @@ import LoadingScreen from 'components/LoadingScreen';
 import { useFonts } from 'expo-font';
 import { queryClient } from 'queryClient';
 import { View } from 'react-native';
-import { DevToolsBubble } from 'react-native-react-query-devtools';
 import { useStyles } from 'react-native-unistyles';
 import Home from 'screens/Home';
 import SplashScreen from 'screens/SplashScreen';
+
+import HeaderBackButton from '~/components/HeaderBackButton';
 import ToggleThemeButton from '~/components/ToggleThemeButton';
+import Contacts from '~/screens/Contacts';
 if (__DEV__) {
   import('~/reactotron').then(() => console.log('Reactotron Configured'));
 }
 export type RootStackParamList = {
   Home: undefined;
   Splash: undefined;
+  Contacts: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -62,9 +65,19 @@ export default function RootStack() {
               headerRight: () => <ToggleThemeButton />,
             }}
           />
+          <Stack.Screen
+            name="Contacts"
+            component={Contacts}
+            options={{
+              headerBackground(props) {
+                return <View />;
+              },
+              headerLeft: () => <HeaderBackButton previousRoute="Home" />,
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
-      <DevToolsBubble />
     </QueryClientProvider>
   );
 }

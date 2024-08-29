@@ -13,7 +13,7 @@ const SplashScreen = ({ navigation }: any) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.replace('Home');
-    }, 2000);
+    }, 4000);
   }, []);
 
   return (

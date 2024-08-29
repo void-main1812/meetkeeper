@@ -9,8 +9,9 @@ const useGetCharachterById = ({ id }: { id: number }) => {
   });
 
   const charachter = data;
+  const EpisodeArray = charachter?.episode.map((episode: string) => episode.split('/').pop());
 
-  return { charachter, status, error };
+  return { charachter, EpisodeArray, status, error };
 };
 
 export default useGetCharachterById;

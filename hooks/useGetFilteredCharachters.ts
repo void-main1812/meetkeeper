@@ -2,17 +2,23 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getFilteredCharachters } from '~/api/charachter.api';
 
-const useGetFilteredCharachters = ({ type }: { type: 'alive' | 'dead' | 'unknown' }) => {
-  const { data, error, status } = useQuery({
-    queryKey: ['filtered-charachters'],
-    queryFn: () => getFilteredCharachters(type, 1),
+const useGetFilteredCharachters = ({
+  type,
+  page = 1,
+}: {
+  type: 'alive' | 'dead' | 'unknown';
+  page?: number;
+}) => {
+  const { data, error, status, refetch } = useQuery({
+    queryKey: ['filtered-charachters', type, page],
+    queryFn: () => getFilteredCharachters(type, page),
   });
 
-  const charachters = data?.results.results;
+  const charachters = data?.results;
   const count = data?.info.count;
   const pages = data?.info.pages;
 
-  return { charachters, count, pages, status, error };
+  return { charachters, count, pages, status, error, refetch };
 };
 
 export default useGetFilteredCharachters;

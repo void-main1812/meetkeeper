@@ -1,12 +1,14 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-import { globalStyles } from './globalStyles';
 import { typographyStyles } from './unistyles/typography';
+
 import { height, width } from '~/utils/screenSizeUtils';
 
 export const splashScreenStyles = createStyleSheet((theme) => ({
   container: {
-    ...globalStyles(theme).container,
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: theme.components.Container.backgroundColor,
     justifyContent: 'flex-start',
     height: height(100),
     width: width(100),

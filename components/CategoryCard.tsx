@@ -9,10 +9,11 @@ type CategoryCardProps = {
   title: string;
   count: number;
   image: string;
+  onPress?: () => void;
 };
 
-const CategoryCard = ({ title, count, image }: CategoryCardProps) => {
-  const { theme, styles } = useStyles(categoryCardStyles);
+const CategoryCard = ({ title, count, image, onPress }: CategoryCardProps) => {
+  const { styles } = useStyles(categoryCardStyles);
 
   const requiredImages: { [key: string]: any } = {
     'All-Charachters': require('../assets/images/Rick-and-Morty-charachter.png'),
@@ -21,7 +22,7 @@ const CategoryCard = ({ title, count, image }: CategoryCardProps) => {
   };
 
   return (
-    <Pressable style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={requiredImages[image]} />
       </View>
